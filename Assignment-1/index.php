@@ -1,5 +1,8 @@
 <?php
-include "class.php";
+include "Registration.php";
+include "Getter & Seeter.php";
+include "SuperHero.php";
+include "laptop.php";
 ?>
 
 <!DOCTYPE html>
