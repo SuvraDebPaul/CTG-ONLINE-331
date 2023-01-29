@@ -1,3 +1,3 @@
-.Cklabel {
-  display: inline !important;
+li.list-group-item::before {
+  content: counter(section, upper-roman) ". " !important;
 }

@@ -1,6 +1,7 @@
 <?php
 include @"functions/Sum.php";
 include @"functions/userInfo.php";
+include @"functions/registration.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +13,7 @@ include @"functions/userInfo.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Vendors/Bootstrap 5.2.3/bootstrap.min.css">
     <link rel="stylesheet" href="Vendors/Font Awsome 6.1/all.min.css">
+    <link rel="stylesheet" href="style.css">
 
     <title>Forms Practice & Sanitization of Input Data</title>
 </head>
@@ -94,7 +96,60 @@ include @"functions/userInfo.php";
                         <h3> AGE : <?php echo $age ?> </h3>
                         <h3> GENDER : <?php echo $gender ?> </h3>
                     </div>
-
+                    <br>
+                    <h5>3. Make a registration form with fields username,password,email,phone,address. Validate the form with
+                        <ol class="ms-5 mt-3 list-group list-group-numbered">
+                            <li class="list-group-item d-inline">username must be at least 6 character</li>
+                            <li class="list-group-item d-inline">password at least 8 length</li>
+                            <li class="list-group-item d-inline">username and password must be filled up</li>
+                            <li class="list-group-item d-inline">phone number must be numeric</li>
+                        </ol>
+                    </h5>
+                    <!-- TASK THREE -->
+                    <form action="" method="POST">
+                        <div class="form-group row mb-2 mt-5">
+                            <label for="userName" class="col-sm-2 col-form-label">USER NAME :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="userName" id="userName" placeholder="Please Enter Your User Name" value="<?php echo $userName ?>">
+                                <h6 class="mt-2"><?php echo $userNote ?></h6>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label for="password" class="col-sm-2 col-form-label">PASSWORD :</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Please Enter Your Password" value="<?php echo $userPass ?>">
+                                <h6 class="mt-2"><?php echo $passNote ?></h6>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label for="eMail" class="col-sm-2 col-form-label">EMAIL :</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" name="eMail" id="eMail" placeholder="Please Enter Your eMail" value="<?php  ?>">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label for="phone" class="col-sm-2 col-form-label">PHONE NUMBER :</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="phone" id="phone" placeholder="Please Enter Your Phone Number" value="<?php  ?>">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label for="address" class="col-sm-2 col-form-label">ADDRESS :</label>
+                            <div class="col-sm-10">
+                                <textarea type="text-area" class="form-control" name="address" id="address" placeholder="Please Enter Your Address Here" rows="3" value="<?php  ?>"></textarea>
+                            </div>
+                        </div>
+                        <div class="d-grid mt-2">
+                            <button type="submit" class="btn btn-primary">SUBMIT FORM</button>
+                        </div>
+                    </form>
+                    <br>
+                    <h3 class="fw-bold text-bg-warning p-2 rounded">RESULT</h3>
+                    <div class="p-2 text-bg-light rounded">
+                        <h3> USER NAME : <?php echo $userName; ?> </h3>
+                        <h3> PASSWORD : <?php echo $passNote; ?> </h3>
+                        <h3> USER & PASS NOTE : <?php echo $userPasNote; ?> </h3>
+                    </div>
                     <br>
                 </div>
             </div>
