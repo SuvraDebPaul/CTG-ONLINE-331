@@ -26,7 +26,6 @@ if (isset($_REQUEST['password']) && ($_REQUEST['password'] != '')) {
 }
 
 if (isset($_REQUEST['userName']) && ($_REQUEST['userName'] != '') &&  isset($_REQUEST['password']) && ($_REQUEST['password'] != '')) {
-    echo "OK";
 } else {
     $userPasNote = "User Name And Password Must Be Filled";
 }
