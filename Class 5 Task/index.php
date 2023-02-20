@@ -178,7 +178,7 @@ include @"functions/task4.php"
                                 </ol>
                             </h5>
                         </div>
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group row mb-2 mt-5">
                                 <label for="userName" class="col-sm-2 col-form-label">USER NAME :</label>
                                 <div class="col-sm-10">
@@ -195,11 +195,19 @@ include @"functions/task4.php"
                                 <label for="files" class="col-sm-2 col-form-label">Upload An Image :</label>
                                 <div class="col-sm-10">
                                     <input type="file" class="form-control" name="file" id="file" placeholder="Please Upload Your Image" value="">
+                                    <p>
+                                    <pre>
+                                            <?php
+                                            print_r($_POST);
+                                            print_r($_FILES);
+                                            ?>
+                                        </pre>
+                                    </p>
                                 </div>
                             </div>
                             <br>
                             <div class="d-grid mt-2">
-                                <button type="submit" class="btn btn-primary" name="task-4">LOG IN</button>
+                                <button type="submit" class="btn btn-primary" name="task-4">SUBMIT</button>
                             </div>
                         </form>
                         <div class="result">
@@ -213,7 +221,6 @@ include @"functions/task4.php"
                                                             echo "Invalid Credentials";
                                                         }
                                                         echo $noValidInput ?> </h3>
-
                             </div>
                             <br>
                         </div>
