@@ -2,7 +2,7 @@
     <div class=" search container">
         <div class="row">
             <div class="col-10 offset-1 me-auto">
-                <form class="row g-3">
+                <form action="" method="POST" class="row g-3">
                     <div class="col-4">
                         <div class="form-group">
                             <input type="text" class="form-control" id="name" placeholder="Name">
@@ -14,8 +14,8 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <button type="submit" class="btn btn-warning px-5 mx-4">Search</button>
-                        <button type="submit" class="btn btn-success px-5">Reset</button>
+                        <button type="submit" name="search" class="btn btn-warning px-5 mx-4">Search</button>
+                        <button type="submit" name="addStudent" class="btn btn-success px-4">Add Student</button>
                     </div>
                 </form>
             </div>
