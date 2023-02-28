@@ -10,19 +10,16 @@
                     <div class="collapse navbar-collapse " id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link text-black" href="pages/signin.php">Sign-Up</a>
+                                <a class="nav-link text-black" href="signin.php">Sign-In</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black" href="pages/signup.php">Sign-In</a>
+                                <a class="nav-link text-black" href="signup.php">Sign-Up</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black" href="pages/addstudent.php">Add Student</a>
+                                <a class="nav-link text-black" href="logout.php">Logout</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black" href="pages/addteacher.php">Add Teacher</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-black" href="pages/logout.php">Logout</a>
+                                <a class="nav-link text-black">User: <?php echo $_SESSION['username'] ?> </a>
                             </li>
                         </ul>
                     </div>

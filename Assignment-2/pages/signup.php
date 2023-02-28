@@ -1,116 +1,54 @@
-<!-- Logic For Functionality -->
-<?php @include "../functions/functions.php" ?>
-<?php
-@include "../functions/student_info.php";
+<?php @include "../core/User.php"; ?>
 
-if (isset($_REQUEST['signup'])) {
-    $firstName = $_REQUEST['fName'];
-    $lastName = $_REQUEST['lName'];
-    $rollNumber = $_REQUEST['rollNo'];
-    $class = $_REQUEST['Class'];
-    $section = $_REQUEST['section'];
-    $userName = $_REQUEST['userName'];
-    $password = $_REQUEST['password'];
-    $userEmail = $_REQUEST['userEmail'];
-    $phoneNumber = $_REQUEST['phoneNumber'];
-    $dob = $_REQUEST['dob'];
-    $gender = $_REQUEST['gender'];
-    if (isset(
-        $firstName,
-        $lastName,
-        $rollNumber,
-        $class,
-        $section,
-        $userName,
-        $userEmail,
-        $password,
-        $phoneNumber,
-        $dob,
-        $gender
-    )) {
-        $student = new Student();
-        $student->register($firstName, $lastName, $rollNumber, $class, $section, $userName, $userEmail, $password, $phoneNumber, $dob, $gender);
-        echo "Registration Successful";
-    };
-}
-?>
+<?php @include "header.php"; ?>
+<?php @include "nav.php" ?>
 
-<?php @include "header.php" ?>
-<section class="signup">
+<section class="signupStudent">
     <div class="container">
         <div class="row mt-3">
             <div class="col-10 offset-1 me-auto">
                 <div class="heading text-center mb-4 alert alert-warning py-2">
-                    <h4>Please Fill Up And Submit Your Information To Register</h4>
+                    <h4>Please Submit User Name & Password for Registration</h4>
+                </div>
+                <div>
+                    <?php
+                    if (isset($_POST['register'])) {
+                        $userName = htmlspecialchars($_POST['userName']);
+                        $Password = md5(htmlspecialchars($_POST['password']));
+                        $userStudent = new User();
+                        if (isset($userName) && isset($Password)) {
+                            $authenticStudent = count($userStudent->checkUserStudent($userName));
+                            if ($authenticStudent == 0) {
+                                $userStudent->userStudent($userName, $Password);
+                                header("location:\CTG%20Online%20331\Assignment-2\index.php");
+                            } else if ($authenticStudent > 0) {
+                                echo '<p class="text-center mb-4 alert alert-danger py-2">User Credential Already Exists Please Login</p>';
+                            }
+                        }
+                    }
+                    if (isset($_POST['login'])) {
+                        header("location:\CTG%20Online%20331\Assignment-2\Pages\Login.php");
+                    }
+                    ?>
                 </div>
                 <form action="" method="POST">
-                    <div class="row">
-                        <div class="form-group col-6">
-                            <label class="my-2" for="fName">First Name</label>
-                            <input type="text" class="form-control" id="fName" name="fName" placeholder="First Name">
-                        </div>
-                        <div class="form-group col-6">
-                            <label class="my-2" for="lName">Last Name</label>
-                            <input type="text" class="form-control" id="lName" name="lName" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-4">
-                            <label class="my-2" for="rollNo">Roll Number</label>
-                            <input type="number" class="form-control" id="rollNo" name="rollNo" placeholder="Roll Number">
-                        </div>
-                        <div class="form-group col-4">
-                            <label class="my-2" for="Class">Class</label>
-                            <input type="text" class="form-control" id="Class" name="Class" placeholder="Class">
-                        </div>
-                        <div class="form-group col-4">
-                            <label class="my-2" for="section">Section</label>
-                            <input type="text" class="form-control" id="section" name="section" placeholder="Section">
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="form-group col-6">
                             <label class="my-2" for="userName">User Name</label>
-                            <input type="text" class="form-control" id="userName" name="userName">
+                            <input type="text" class="form-control" id="userName" name="userName" placeholder="User Name">
                         </div>
                         <div class="form-group col-6">
                             <label class="my-2" for="password">Password</label>
-                            <input type="password" id="password" name="password" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-6">
-                            <label class="my-2" for="userEmail">Email</label>
-                            <input type="text" class="form-control" id="userEmail" name="userEmail">
-                        </div>
-                        <div class="form-group col-6">
-                            <label class="my-2" for="phoneNumber">Phone Number</label>
-                            <input type="number" id="phoneNumber" name="phoneNumber" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-6">
-                            <label class="my-2" for="dob">Date of Birth</label>
-                            <input type="date" class="form-control" id="dob" name="dob">
-                        </div>
-                        <div class="form-group col-6 mt-5">
-                            <label class="me-2" for=""> Gender : </label>
-                            <div class="form-check form-check-inline">
-                                <input type="radio" id="gender" name="gender" class="form-check-input" value="Male">
-                                <label class="form-check-label" for="gender">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input type="radio" id="gender" name="gender" class="form-check-input" value="Female">
-                                <label class="form-check-label" for="gender">Female</label>
-                            </div>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                         </div>
                     </div>
                     <div class="row mt-4">
-                        <div class="d-grid col-6">
-                            <button type="submit" class="btn btn-primary" name="signin">Sign In</button>
+                        <div class="col-6 d-grid">
+                            <button type="submit" class="btn btn-danger" name="register">Register As Student</button>
                         </div>
                         <div class="col-6 d-grid">
-                            <button type="submit" class="btn btn-danger" name="signup">Sign Up</button>
+                            <button type="submit" class="btn btn-success" name="login">Already Have An Account (Login)</button>
                         </div>
                     </div>
                 </form>
@@ -118,4 +56,20 @@ if (isset($_REQUEST['signup'])) {
         </div>
     </div>
 </section>
-<?php @include "footer.php" ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php @include "footer.php"; ?>
