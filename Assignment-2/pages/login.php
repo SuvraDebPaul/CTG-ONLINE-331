@@ -6,7 +6,7 @@
                 <div class="heading text-center mb-4 alert alert-warning py-2">
                     <h4>Please Enter Your User Name And Password</h4>
                 </div>
-                <form method="POST">
+                <form action="" method="POST">
                     <div class="form-group">
                         <label class="mb-1" for="UserName">User Name</label>
                         <input type="email" class="form-control" id="UserName" name="UserName" placeholder="Please Enter Your User Name">

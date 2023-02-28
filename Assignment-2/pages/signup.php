@@ -1,3 +1,40 @@
+<!-- Logic For Functionality -->
+<?php @include "../functions/functions.php" ?>
+<?php
+@include "../functions/student_info.php";
+
+if (isset($_REQUEST['signup'])) {
+    $firstName = $_REQUEST['fName'];
+    $lastName = $_REQUEST['lName'];
+    $rollNumber = $_REQUEST['rollNo'];
+    $class = $_REQUEST['Class'];
+    $section = $_REQUEST['section'];
+    $userName = $_REQUEST['userName'];
+    $password = $_REQUEST['password'];
+    $userEmail = $_REQUEST['userEmail'];
+    $phoneNumber = $_REQUEST['phoneNumber'];
+    $dob = $_REQUEST['dob'];
+    $gender = $_REQUEST['gender'];
+    if (isset(
+        $firstName,
+        $lastName,
+        $rollNumber,
+        $class,
+        $section,
+        $userName,
+        $userEmail,
+        $password,
+        $phoneNumber,
+        $dob,
+        $gender
+    )) {
+        $student = new Student();
+        $student->register($firstName, $lastName, $rollNumber, $class, $section, $userName, $userEmail, $password, $phoneNumber, $dob, $gender);
+        echo "Registration Successful";
+    };
+}
+?>
+
 <?php @include "header.php" ?>
 <section class="signup">
     <div class="container">
@@ -59,11 +96,11 @@
                         <div class="form-group col-6 mt-5">
                             <label class="me-2" for=""> Gender : </label>
                             <div class="form-check form-check-inline">
-                                <input type="radio" id="gender" name="gender" class="form-check-input">
+                                <input type="radio" id="gender" name="gender" class="form-check-input" value="Male">
                                 <label class="form-check-label" for="gender">Male</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" id="gender" name="gender" class="form-check-input">
+                                <input type="radio" id="gender" name="gender" class="form-check-input" value="Female">
                                 <label class="form-check-label" for="gender">Female</label>
                             </div>
                         </div>
